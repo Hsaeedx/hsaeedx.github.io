@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hasan Saeed</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --scarlet: #ba0c2f;
+      --scarlet-dark: #70071c;
+      --scarlet-hover: #d63a56;
+    }
+
+    [data-theme="dark"],
+    [data-theme="auto"] {
+      --bg:          #212325;
+      --bg-mid:      #2c2f31;
+      --bg-card:     #3f4443;
+      --border:      rgba(186,12,47,0.22);
+      --border-sub:  rgba(167,177,183,0.13);
+      --heading:     #f6f7f8;
+      --text:        #cfd4d8;
+      --text-muted:  #868e92;
+      --chip-bg:     rgba(167,177,183,0.1);
+      --chip-border: rgba(167,177,183,0.22);
+      --chip-text:   #bfc6cb;
+      --nav-bg:      rgba(33,35,37,0.92);
+      --shadow:      0 16px 40px rgba(0,0,0,0.4);
+    }
+
+    [data-theme="light"] {
+      --bg:          #f6f7f8;
+      --bg-mid:      #ffffff;
+      --bg-card:     #eff1f2;
+      --border:      rgba(186,12,47,0.2);
+      --border-sub:  rgba(100,106,110,0.15);
+      --heading:     #212325;
+      --text:        #3f4443;
+      --text-muted:  #646a6e;
+      --chip-bg:     rgba(100,106,110,0.07);
+      --chip-border: rgba(100,106,110,0.18);
+      --chip-text:   #3f4443;
+      --nav-bg:      rgba(246,247,248,0.93);
+      --shadow:      0 16px 40px rgba(0,0,0,0.1);
+    }
+
+    @media (prefers-color-scheme: light) {
+      [data-theme="auto"] {
+        --bg:          #f6f7f8;
+        --bg-mid:      #ffffff;
+        --bg-card:     #eff1f2;
+        --border:      rgba(186,12,47,0.2);
+        --border-sub:  rgba(100,106,110,0.15);
+        --heading:     #212325;
+        --text:        #3f4443;
+        --text-muted:  #646a6e;
+        --chip-bg:     rgba(100,106,110,0.07);
+        --chip-border: rgba(100,106,110,0.18);
+        --chip-text:   #3f4443;
+        --nav-bg:      rgba(246,247,248,0.93);
+        --shadow:      0 16px 40px rgba(0,0,0,0.1);
+      }
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.25rem 4rem;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; color: var(--scarlet);
+      letter-spacing: 0.05em; text-decoration: none; flex-shrink: 0;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      color: var(--text-muted); text-decoration: none;
+      font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--scarlet); }
+    .theme-toggle {
+      display: flex; align-items: center; gap: 0.45rem;
+      background: none; border: 1px solid var(--border-sub);
+      border-radius: 999px; padding: 0.35rem 0.85rem;
+      cursor: pointer; color: var(--text-muted);
+      font-family: 'DM Sans', sans-serif; font-size: 0.75rem;
+      letter-spacing: 0.04em; transition: border-color 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .theme-toggle:hover { border-color: var(--scarlet); color: var(--scarlet); }
+    .theme-toggle svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 8rem 4rem 4rem; position: relative; overflow: hidden;
+      background: var(--bg);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 70% 50%, rgba(186,12,47,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 80% at 10% 80%, rgba(186,12,47,0.04) 0%, transparent 60%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(186,12,47,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(186,12,47,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content { position: relative; max-width: 900px; }
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace; font-size: 0.75rem;
+      color: var(--scarlet); letter-spacing: 0.15em; text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0; animation: fadeUp 0.6s ease 0.2s forwards;
+    }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 7vw, 6rem); font-weight: 700;
+      color: var(--heading); line-height: 1.05; margin-bottom: 1.5rem;
+      opacity: 0; animation: fadeUp 0.7s ease 0.35s forwards;
+    }
+    .hero-name span { color: var(--scarlet); }
+    .hero-tagline {
+      font-size: 1.15rem; color: var(--text-muted); line-height: 1.7;
+      max-width: 580px; margin-bottom: 2.5rem; font-weight: 300;
+      opacity: 0; animation: fadeUp 0.7s ease 0.5s forwards;
+    }
+    .hero-pills {
+      display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 3rem;
+      opacity: 0; animation: fadeUp 0.7s ease 0.65s forwards;
+    }
+    .pill {
+      border: 1px solid rgba(186,12,47,0.35); color: var(--scarlet);
+      padding: 0.35rem 1rem; border-radius: 999px;
+      font-size: 0.78rem; letter-spacing: 0.05em;
+    }
+    .hero-cta {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.7s ease 0.8s forwards;
+    }
+    .btn-primary {
+      background: var(--scarlet); color: #fff;
+      padding: 0.8rem 2rem; border-radius: 4px; text-decoration: none;
+      font-weight: 500; font-size: 0.9rem; letter-spacing: 0.05em;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--scarlet-dark); transform: translateY(-2px); }
+    .btn-secondary {
+      border: 1px solid rgba(186,12,47,0.4); color: var(--scarlet);
+      padding: 0.8rem 2rem; border-radius: 4px; text-decoration: none;
+      font-size: 0.9rem; letter-spacing: 0.05em;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover { background: rgba(186,12,47,0.06); border-color: var(--scarlet); }
+
+    /* SECTIONS */
+    section { padding: 6rem 4rem; transition: background 0.3s; }
+    .section-inner { max-width: 1000px; margin: 0 auto; }
+    .section-label {
+      font-family: 'DM Mono', monospace; font-size: 0.7rem;
+      color: var(--scarlet); letter-spacing: 0.2em; text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem); color: var(--heading);
+      font-weight: 600; margin-bottom: 3rem;
+      padding-bottom: 1.25rem; border-bottom: 1px solid var(--border);
+    }
+    #about        { background: var(--bg-mid); }
+    #projects     { background: var(--bg); }
+    #publications { background: var(--bg-mid); }
+    #contact      { background: var(--bg); }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .about-bio p { color: var(--text); line-height: 1.85; font-size: 0.97rem; margin-bottom: 1.2rem; font-weight: 300; }
+    .about-bio p strong { color: var(--heading); font-weight: 500; }
+    .info-card {
+      background: var(--bg-card); border: 1px solid var(--border-sub);
+      border-radius: 6px; padding: 1.75rem; margin-bottom: 1.5rem;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .info-card:last-child { margin-bottom: 0; }
+    .info-card h4 {
+      font-family: 'Playfair Display', serif; color: var(--scarlet);
+      font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 0.05em;
+    }
+    .contact-item {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 0.65rem; font-size: 0.85rem; color: var(--text-muted);
+    }
+    .contact-item svg { flex-shrink: 0; color: var(--scarlet); }
+    .contact-item a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .contact-item a:hover { color: var(--scarlet); }
+    .edu-item { margin-bottom: 1.25rem; }
+    .edu-item:last-child { margin-bottom: 0; }
+    .edu-dates { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--scarlet); margin-bottom: 0.2rem; }
+    .edu-school { font-size: 0.88rem; color: var(--heading); font-weight: 500; margin-bottom: 0.15rem; }
+    .edu-degree { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+    .edu-gpa {
+      display: inline-block; margin-top: 0.35rem; font-size: 0.75rem;
+      color: var(--scarlet); border: 1px solid rgba(186,12,47,0.3);
+      padding: 0.15rem 0.5rem; border-radius: 3px;
+    }
+
+    /* PROJECTS */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap: 1.5rem; }
+    .project-card {
+      background: var(--bg-mid); border: 1px solid var(--border-sub);
+      border-radius: 8px; padding: 2rem; position: relative; overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s, background 0.3s;
+    }
+    .project-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--scarlet), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .project-card:hover { border-color: rgba(186,12,47,0.4); transform: translateY(-4px); box-shadow: var(--shadow); }
+    .project-card:hover::before { opacity: 1; }
+    .project-tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--text-muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.75rem; }
+    .project-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--heading); margin-bottom: 0.65rem; font-weight: 600; }
+    .project-org { font-size: 0.8rem; color: var(--scarlet); margin-bottom: 0.85rem; font-style: italic; }
+    .project-desc { font-size: 0.84rem; color: var(--text-muted); line-height: 1.75; }
+    .project-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.25rem; }
+    .chip { background: var(--chip-bg); border: 1px solid var(--chip-border); color: var(--chip-text); font-size: 0.7rem; padding: 0.2rem 0.6rem; border-radius: 3px; }
+
+    /* PUBLICATIONS */
+    .pub-list { display: flex; flex-direction: column; gap: 1.25rem; }
+    .pub-item {
+      background: var(--bg-card); border-left: 3px solid var(--scarlet);
+      padding: 1.25rem 1.5rem; border-radius: 0 6px 6px 0;
+      font-size: 0.85rem; color: var(--text-muted); line-height: 1.7;
+      transition: border-color 0.2s, background 0.3s;
+    }
+    .pub-item:hover { border-color: var(--scarlet-hover); }
+    .pub-item strong { color: var(--heading); }
+    .pub-item em { color: var(--scarlet); font-style: normal; font-weight: 500; }
+    .pub-venue { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--scarlet); margin-top: 0.4rem; }
+
+    /* CONTACT */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .contact-intro p { font-size: 1.05rem; color: var(--text-muted); line-height: 1.8; font-weight: 300; margin-bottom: 1rem; }
+    .contact-intro strong { color: var(--heading); }
+    .contact-details { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-row {
+      display: flex; align-items: center; gap: 1rem;
+      background: var(--bg-mid); border: 1px solid var(--border-sub);
+      padding: 1rem 1.25rem; border-radius: 6px;
+      transition: border-color 0.2s, background 0.3s;
+    }
+    .contact-row:hover { border-color: rgba(186,12,47,0.4); }
+    .contact-row svg { color: var(--scarlet); flex-shrink: 0; }
+    .contact-row-label { color: var(--text-muted); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .contact-row-value { color: var(--heading); font-size: 0.85rem; }
+    .contact-row-value a { color: var(--heading); text-decoration: none; }
+    .contact-row-value a:hover { color: var(--scarlet); }
+
+    /* FOOTER */
+    footer {
+      text-align: center; padding: 2rem;
+      border-top: 1px solid var(--border-sub);
+      font-size: 0.78rem; color: var(--text-muted);
+      background: var(--bg); transition: background 0.3s;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Reveal — visible by default, animated in when JS works */
+    .reveal { opacity: 1; transform: none; }
+    .js-ready .reveal {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .js-ready .reveal.visible { opacity: 1; transform: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.25rem; }
+      section { padding: 4rem 1.5rem; }
+      #hero { padding: 7rem 1.5rem 3rem; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 560px) { .nav-links { display: none; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#hero">Hasan Saeed</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle colour theme">
+    <svg id="themeIcon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"></svg>
+    <span id="themeLabel"></span>
+  </button>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">MD Candidate · The Ohio State University College of Medicine · Engineer · Founder</p>
+    <h1 class="hero-name">Hasan<br /><span>Saeed</span></h1>
+    <p class="hero-tagline">
+      Third-year medical student and computer scientist building at the intersection
+      of medicine and technology — from ML algorithms for cardiac diagnostics to
+      software improving healthcare access globally.
+    </p>
+    <div class="hero-pills">
+      <span class="pill">Machine Learning</span>
+      <span class="pill">Medical Research</span>
+      <span class="pill">Healthcare Technology</span>
+      <span class="pill">Software Development</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-inner">
+    <p class="section-label reveal">Background</p>
+    <h2 class="section-title reveal">About Me</h2>
+    <div class="about-grid">
+      <div class="about-bio reveal">
+        <p>I'm a <strong>third-year medical student at The Ohio State University College of Medicine</strong> with a background in computer science engineering from the University of Michigan. My work lives at the crossroads of clinical medicine and technology.</p>
+        <p>As a <strong>researcher at OSU's Department of Otolaryngology</strong>, I lead Medicare Claims data analysis as project leader and primary data scientist. Previously at Michigan Medicine's Frankel Cardiovascular Center, I developed novel ML models for atrial flutter detection in 12-lead ECGs — work resulting in a <strong>patent-pending algorithm</strong> and collaboration with Michigan Medicine and General Electric.</p>
+        <p>I founded <strong>CliniCorps</strong>, a Michigan registered 501(c)(3) nonprofit building free EMR software with integrated telehealth for local free clinics, with a vision to extend healthcare access globally. I also founded <strong>HUJA, LLC</strong>, developing AI Explain — an Anki add-on for AI-generated medical flashcard explanations used by medical students preparing for USMLE.</p>
+        <p>Beyond research and startups, I volunteer at the <strong>Noor Free Clinic</strong> in Columbus, providing primary care to uninsured patients and offering Arabic translation for patients with limited English proficiency.</p>
+      </div>
+      <div class="about-sidebar">
+        <div class="info-card reveal">
+          <h4>Contact</h4>
+          <div class="contact-item">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+            <a href="mailto:Hasan.Saeed@osumc.edu">Hasan.Saeed@osumc.edu</a>
+          </div>
+          <div class="contact-item">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 5.18 2 2 0 015 3h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L9.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 17z"/></svg>
+            (617) 784-1895
+          </div>
+          <div class="contact-item">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Columbus, OH 43201
+          </div>
+        </div>
+        <div class="info-card reveal">
+          <h4>Education</h4>
+          <div class="edu-item">
+            <div class="edu-dates">Aug 2023 – Present</div>
+            <div class="edu-school">The Ohio State University College of Medicine</div>
+            <div class="edu-degree">Third-Year Medical Student</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-dates">Aug 2020 – Dec 2022</div>
+            <div class="edu-school">University of Michigan College of Engineering</div>
+            <div class="edu-degree">B.S. in Engineering: Computer Science</div>
+            <span class="edu-gpa">GPA 3.80 / 4.0 · 3× Dean's List · 3× University Honors</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-inner">
+    <p class="section-label reveal">Portfolio</p>
+    <h2 class="section-title reveal">Projects & Experience</h2>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <div class="project-tag">Nonprofit · Founder</div>
+        <div class="project-title">CliniCorps</div>
+        <div class="project-org">Michigan Registered 501(c)(3) — Ann Arbor, MI</div>
+        <div class="project-desc">Founded and developed a nonprofit building free EMR software with integrated telehealth for local free clinics. Vision to enable volunteer physicians to deliver telehealth to patients with limited global healthcare access.</div>
+        <div class="project-chips"><span class="chip">EMR Software</span><span class="chip">Telehealth</span><span class="chip">501(c)(3)</span></div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-tag">ML Research · Patent Pending</div>
+        <div class="project-title">Atrial Flutter Detection Algorithm</div>
+        <div class="project-org">Michigan Medicine Frankel Cardiovascular Center</div>
+        <div class="project-desc">Developed a novel machine-learning model for atrial flutter detection in 12-lead ECGs, substantially improving recall vs. commercial algorithms. Collaborated with Michigan Medicine and GE to build a large-scale ECG repository.</div>
+        <div class="project-chips"><span class="chip">ECG Analysis</span><span class="chip">Machine Learning</span><span class="chip">Cardiology</span></div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-tag">Startup · Founder</div>
+        <div class="project-title">AI Explain (HUJA, LLC)</div>
+        <div class="project-org">Columbus, OH — Dec 2025–Present</div>
+        <div class="project-desc">Founded HUJA, LLC and developed AI Explain, a publicly released Anki add-on generating high-yield AI medical flashcard explanations. Actively used by medical students for USMLE and exam preparation.</div>
+        <div class="project-chips"><span class="chip">AI / LLM</span><span class="chip">EdTech</span><span class="chip">USMLE</span></div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-tag">Clinical Research</div>
+        <div class="project-title">Medicare Claims Research</div>
+        <div class="project-org">OSU Department of Otolaryngology — Columbus, OH</div>
+        <div class="project-desc">Project leader and primary data scientist for Medicare Claims research. Analyzing large-scale claims data on thyroid incidentalomas, arterial stenosis, baroreflex failure, and dysphagia outcomes in head and neck cancer patients.</div>
+        <div class="project-chips"><span class="chip">Data Science</span><span class="chip">Otolaryngology</span><span class="chip">Medicare Claims</span></div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-tag">Mobile Development</div>
+        <div class="project-title">OSU Medical Student App</div>
+        <div class="project-org">The Ohio State University — Columbus, OH</div>
+        <div class="project-desc">Contracted by the university to build a mobile app for OSU students to view class schedules and OSU resources. Planned for deployment on all medical school-issued iPads.</div>
+        <div class="project-chips"><span class="chip">Mobile App</span><span class="chip">iOS</span><span class="chip">University Contract</span></div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-tag">Volunteer · Community</div>
+        <div class="project-title">Noor Free Clinic</div>
+        <div class="project-org">Columbus, OH — Aug 2023–Present</div>
+        <div class="project-desc">Assisted physicians providing free primary care to uninsured and underserved patients in Columbus. Provided Arabic translation for patients with limited English proficiency.</div>
+        <div class="project-chips"><span class="chip">Primary Care</span><span class="chip">Arabic Translation</span><span class="chip">Community Health</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="section-inner">
+    <p class="section-label reveal">Research</p>
+    <h2 class="section-title reveal">Peer-Reviewed Publications & Conferences</h2>
+    <div class="pub-list">
+      <div class="pub-item reveal">
+        Lehman, L.W., Moody, B., Deep, H., Wu, F., <strong>Saeed, H.</strong>, McCullum, L., Perry, D., Struja, T., Li, Q., Clifford, G., &amp; Mark, R. (2023). <em>VTaC: A benchmark dataset of ventricular tachycardia alarms from ICU monitors.</em>
+        <div class="pub-venue">NeurIPS — Advances in Neural Information Processing Systems · doi:10.13026/8td2-g363</div>
+      </div>
+      <div class="pub-item reveal">
+        McCullum, L., <strong>Saeed, H.</strong>, Moody, B., Perry, D., Gottlieb, E., Pollard, T., Borrat Frigola, X., Li, Q., Clifford, G., Mark, R., &amp; Lehman, L. (2022). <em>PhysioTag: An Open-Source Platform for Collaborative Annotation of Physiological Waveforms.</em>
+        <div class="pub-venue">Computing in Cardiology (CinC) · doi:10.13026/g06j-3612</div>
+      </div>
+      <div class="pub-item reveal">
+        <strong>Saeed, H.</strong>, Wykoff, Z., Nguyen, M., Jha, N., Reed, D., &amp; Ramaswamy, A. (2025). Follow-up patterns and outcomes of patients with thyroid incidentalomas. Oral presentation.
+        <div class="pub-venue">Triological Society Combined Sections Meeting — Orlando, FL</div>
+      </div>
+      <div class="pub-item reveal">
+        Reed, D., <strong>Saeed, H.</strong>, &amp; Ramaswamy, A. (2026). Arterial stenosis and baroreflex failure: Nationwide study of carotid-driven autonomic complications among head and neck cancer patients. Poster presentation.
+        <div class="pub-venue">Triological Society Combined Sections Meeting — Orlando, FL</div>
+      </div>
+      <div class="pub-item reveal">
+        Fleifil, Y., <strong>Saeed, H.</strong>, &amp; Ramaswamy, A. (2026). Effects of dysphagia diagnosis on stroke patient outcome measures. Oral presentation.
+        <div class="pub-venue">Dysphagia Research Society Annual Meeting — Aurora, CO</div>
+      </div>
+      <div class="pub-item reveal">
+        <strong>Saeed, H.</strong> (2024). Case review: Pediatric patient with Treacher Collins syndrome. Oral presentation.
+        <div class="pub-venue">ENT Mentorship Program — The Ohio State University, Columbus, OH</div>
+      </div>
+      <div class="pub-item reveal">
+        <strong>Saeed, H.</strong> &amp; Oral, H. (2022). Detection of atrial flutter using machine learning. Poster presentation.
+        <div class="pub-venue">UROP Symposium — University of Michigan, Ann Arbor, MI</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-label reveal">Let's Connect</p>
+    <h2 class="section-title reveal">Contact</h2>
+    <div class="contact-grid">
+      <div class="contact-intro reveal">
+        <p>I'm always open to conversations about <strong>medical technology, research collaborations, software projects</strong>, or opportunities at the intersection of medicine and engineering.</p>
+        <p>Whether you're a clinician, engineer, researcher, or investor — feel free to reach out.</p>
+      </div>
+      <div class="contact-details reveal">
+        <div class="contact-row">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          <div class="contact-row-text">
+            <div class="contact-row-label">Email</div>
+            <div class="contact-row-value"><a href="mailto:Hasan.Saeed@osumc.edu">Hasan.Saeed@osumc.edu</a></div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 5.18 2 2 0 015 3h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L9.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 17z"/></svg>
+          <div class="contact-row-text">
+            <div class="contact-row-label">Phone</div>
+            <div class="contact-row-value">(617) 784-1895</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div class="contact-row-text">
+            <div class="contact-row-label">Location</div>
+            <div class="contact-row-value">Columbus, OH</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Hasan Saeed · Built for GitHub Pages</p>
+</footer>
+
+<script>
+  // THEME TOGGLE
+  const html  = document.documentElement;
+  const btn   = document.getElementById('themeToggle');
+  const label = document.getElementById('themeLabel');
+  const icon  = document.getElementById('themeIcon');
+  const themes = ['auto', 'light', 'dark'];
+  const meta = {
+    auto:  { label: 'Auto',  sun: true  },
+    light: { label: 'Light', sun: true  },
+    dark:  { label: 'Dark',  sun: false },
+  };
+  const SUN  = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+  const MOON = '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>';
+  let current = localStorage.getItem('hs-theme') || 'auto';
+  applyTheme(current);
+  btn.addEventListener('click', () => {
+    current = themes[(themes.indexOf(current) + 1) % themes.length];
+    localStorage.setItem('hs-theme', current);
+    applyTheme(current);
+  });
+  function applyTheme(t) {
+    html.setAttribute('data-theme', t);
+    label.textContent = meta[t].label;
+    const showSun = t === 'auto' ? !window.matchMedia('(prefers-color-scheme: dark)').matches : meta[t].sun;
+    icon.innerHTML = showSun ? SUN : MOON;
+  }
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    if (current === 'auto') applyTheme('auto');
+  });
+
+  // SCROLL REVEAL
+  // Add js-ready class so CSS hides elements for animation
+  document.body.classList.add('js-ready');
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+  reveals.forEach(el => obs.observe(el));
+  // Safety net: make everything visible after 2s
+  setTimeout(() => {
+    reveals.forEach(el => el.classList.add('visible'));
+  }, 2000);
+</script>
+</body>
+</html>
