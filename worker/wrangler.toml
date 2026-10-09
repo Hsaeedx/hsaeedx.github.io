@@ -1,0 +1,13 @@
+name = "visitor-log"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+routes = [
+  { pattern = "hasan-saeed.com/*", zone_name = "hasan-saeed.com" },
+  { pattern = "www.hasan-saeed.com/*", zone_name = "hasan-saeed.com" },
+]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "visitor-log"
+database_id = "28daf8b8-d68e-4461-ba10-a6d28b07c01e"
