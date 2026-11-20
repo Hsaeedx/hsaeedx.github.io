@@ -317,6 +317,13 @@
 
     /* ── PUBLICATIONS ── */
     .pub-list { display: flex; flex-direction: column; gap: 1rem; }
+    .pub-group { margin-bottom: 3rem; }
+    .pub-group-title {
+      font-family: 'Playfair Display', serif; font-size: 1.2rem;
+      color: var(--heading); margin-bottom: 1rem;
+    }
+    .pub-venue a { color: inherit; text-decoration: none; border-bottom: 1px solid currentColor; }
+    .pub-venue a:hover { color: var(--scarlet-hover); }
     .pub-item {
       background: var(--bg-card); border-left: 3px solid var(--scarlet);
       padding: 1.1rem 1.4rem; border-radius: 0 6px 6px 0;
@@ -462,10 +469,10 @@
     <div class="about-grid">
       <div class="about-bio reveal">
         <p>I'm a <strong>fourth-year medical student at The Ohio State University College of Medicine</strong> with a B.S.E. in Computer Science Engineering from the University of Michigan. My work lives at the crossroads of clinical medicine and technology.</p>
-        <p>As a <strong>researcher at OSU's Department of Otolaryngology</strong>, I lead Medicare Claims data analysis as project leader and primary data scientist.</p>
-        <p>I am also a <strong>Machine Learning Engineer at Michigan Medicine's Frankel Cardiovascular Center</strong>, developing novel ML models for atrial flutter detection in 12-lead ECGs in collaboration with Michigan Medicine and General Electric.</p>
-        <p>I founded <strong>HUJA, LLC</strong>, developing AI Explain — an Anki add-on that generates high-yield, AI-powered medical flashcard explanations actively used by medical students preparing for USMLE board exams.</p>
-        <p>I also founded <strong>CliniCorps</strong>, a Michigan registered 501(c)(3) nonprofit — our near-term goal is to deploy free, open-source software to local free clinics to enable and coordinate secure telehealth visits to underserved populations.</p>
+        <p>As a <strong>researcher and data scientist in OSU's Department of Otolaryngology</strong>, I developed proposals to CMS to access OSU's Medicare fee-for-service claims, processed the raw claims into queryable research datasets, and serve as project lead and primary data scientist for three studies in laryngology and head and neck oncology. I also study follow-up patterns of incidentally discovered thyroid nodules — work I presented as a first-author oral presentation at the 2025 Triological Society Combined Sections Meeting.</p>
+        <p>I am also a <strong>Machine Learning Engineer at Michigan Medicine's Frankel Cardiovascular Center</strong>, where I developed a novel ML model to distinguish atrial flutter from sinus tachycardia in 12-lead ECGs, in collaboration with Michigan Medicine and General Electric.</p>
+        <p>At OSU, I lead a <strong>robotic endoscope holder</strong> project, mentoring senior biomedical engineering students as they design a proof-of-concept device for endoscopic endonasal skull base surgery.</p>
+        <p>I founded <strong>HUJA, LLC</strong> and built AI Explain — an Anki add-on that generates contextual, high-yield explanations within the flashcard workflow, used by medical students nationwide for USMLE and exam preparation.</p>
       </div>
       <div class="about-sidebar">
         <div class="info-card reveal">
@@ -486,9 +493,9 @@
         <div class="info-card reveal">
           <h4>Education</h4>
           <div class="edu-item">
-            <div class="edu-dates">Aug 2023 – Present</div>
+            <div class="edu-dates">Aug 2023 – May 2027</div>
             <div class="edu-school">The Ohio State University College of Medicine</div>
-            <div class="edu-degree">Third-Year Medical Student</div>
+            <div class="edu-degree">Doctor of Medicine (M.D.) Candidate · Expected May 2027</div>
           </div>
           <div class="edu-item">
             <div class="edu-dates">Aug 2020 – Dec 2022</div>
@@ -518,21 +525,25 @@
         <div class="project-type">Department of Otolaryngology · The Ohio State University</div>
         <h3 class="project-featured-title">CMS Medicare Claims Research</h3>
         <p class="project-featured-desc">
-          As project leader and primary data scientist in the <strong style="color:var(--heading)">OSU Department of Otolaryngology</strong>,
-          I analyze large-scale CMS Medicare FFS claims data to drive improvements in ENT patient care nationally.
+          In the <strong style="color:var(--heading)">OSU Department of Otolaryngology</strong>, I developed proposals to CMS to access
+          OSU's Medicare fee-for-service claims and processed the raw claims into queryable research datasets. As project lead and
+          primary data scientist, I build analytic pipelines that translate clinical questions into cohort definitions and outcomes.
         </p>
         <div style="display:flex; flex-direction:column; gap:0.75rem; margin-bottom:1.25rem;">
           <div style="background:var(--bg-card); border-left:2px solid var(--scarlet); padding:0.75rem 1rem; border-radius:0 4px 4px 0; font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
-            <div style="color:var(--heading); font-weight:500; margin-bottom:0.2rem;">TORS vs. Radiation for Oropharyngeal Squamous Cell Carcinoma</div>
-            Propensity-matched comparison of transoral robotic surgery vs. radiation-based therapy for non-metastatic OPSCC — evaluating survival and functional outcomes including dysphagia, gastrostomy tube, and tracheostomy rates.
+            <div style="color:var(--heading); font-weight:500; margin-bottom:0.2rem;">Transoral Robotic Surgery in Single- and Multi-Modal Oropharyngeal Cancer</div>
+            A Medicare functional outcomes study of TORS for oropharyngeal cancer, evaluating dysphagia, gastrostomy tube, and tracheostomy rates.
+            <div class="pub-venue">Abstract submitted to AHNS, COSM 2027</div>
           </div>
           <div style="background:var(--bg-card); border-left:2px solid var(--scarlet); padding:0.75rem 1rem; border-radius:0 4px 4px 0; font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
-            <div style="color:var(--heading); font-weight:500; margin-bottom:0.2rem;">Early vs. Late Speech-Language Pathology After Acute Stroke</div>
-            Impact of outpatient SLP referral timing on aspiration pneumonia, dysphagia diagnoses, and G-tube placement at 1 year post-discharge among Medicare stroke patients.
+            <div style="color:var(--heading); font-weight:500; margin-bottom:0.2rem;">Timing of Outpatient Speech-Language Pathology and Swallowing Outcomes After Acute Stroke</div>
+            A national Medicare cohort study of how outpatient SLP timing affects aspiration pneumonia, dysphagia diagnoses, and G-tube placement after stroke.
+            <div class="pub-venue">Submitted to Dysphagia · Poster at Fall Voice Conference 2026</div>
           </div>
           <div style="background:var(--bg-card); border-left:2px solid var(--scarlet); padding:0.75rem 1rem; border-radius:0 4px 4px 0; font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
-            <div style="color:var(--heading); font-weight:500; margin-bottom:0.2rem;">Aggressiveness of End-of-Life Care in Head &amp; Neck Cancer Patients on Immune Checkpoint Inhibitors</div>
-            Characterizing end-of-life care patterns among Medicare beneficiaries with head and neck cancer who received immune checkpoint inhibitors, including hospice utilization and late-stage intervention rates.
+            <div style="color:var(--heading); font-weight:500; margin-bottom:0.2rem;">Hospice Use and Last Immunotherapy Administration Near Death in Head &amp; Neck Cancer</div>
+            Characterizing end-of-life care among Medicare beneficiaries with head and neck cancer who received immunotherapy, including hospice use and timing of the last immunotherapy dose.
+            <div class="pub-venue">Submitted to JCO Oncology Practice · Abstract submitted to AHNS, COSM 2027</div>
           </div>
         </div>
         <div class="project-chips">
@@ -549,20 +560,24 @@
         <div class="project-featured-icon"><img src="MM-FCC.jpg" alt="ECG Analysis Icon" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"></div>
       </div>
       <div class="project-featured-body">
-        <div class="project-type">Division of Cardiovascular Medicine · University of Michigan</div>
+        <div class="project-type">Frankel Cardiovascular Center · Michigan Medicine</div>
         <h3 class="project-featured-title">Atrial Flutter Detection Algorithm</h3>
         <p class="project-featured-desc">
-          At the <strong style="color:var(--heading)">University of Michigan</strong>, I am developing a novel ML model
-          for atrial flutter detection in 12-lead ECGs that substantially outperforms commercial algorithms
-          in recall — a critical metric when missing a diagnosis has serious consequences.
-          The work is conducted in collaboration with <strong style="color:var(--heading)">Michigan Medicine and General Electric</strong>,
-          building a large-scale ECG repository for ongoing electrophysiology research.
+          As a Machine Learning Engineer at <strong style="color:var(--heading)">Michigan Medicine's Frankel Cardiovascular Center</strong>,
+          I developed a novel ML model that distinguishes atrial flutter from sinus tachycardia in 12-lead ECGs. Validated against
+          GE's commercial algorithm and physician overreads, it substantially improves recall — a critical metric when a missed
+          diagnosis has serious consequences. I also collaborated with <strong style="color:var(--heading)">Michigan Medicine and General Electric</strong>
+          to build a large-scale ECG repository for further electrophysiology research.
+        </p>
+        <p class="project-featured-desc">
+          The algorithm has been disclosed to the University Technology Transfer Office, with a provisional patent filing planned.
         </p>
         <div class="project-chips">
-          <span class="chip">University of Michigan</span>
+          <span class="chip">Michigan Medicine</span>
           <span class="chip">Machine Learning</span>
           <span class="chip">ECG Analysis</span>
-          <span class="chip">Cardiology</span>
+          <span class="chip">Electrophysiology</span>
+          <span class="chip">Invention Disclosed</span>
         </div>
       </div>
     </div>
@@ -572,23 +587,23 @@
       <div class="project-card reveal">
         <div class="project-card-top"></div>
         <div class="project-card-body">
-          <div class="project-tag">Startup · Founder · Publicly Released</div>
-          <div class="project-title">AI Explain</div>
-          <div class="project-org">HUJA, LLC — Columbus, OH</div>
-          <p class="project-problem-sm">What if every medical flashcard came with an expert explanation?</p>
-          <p class="project-desc">Built and launched an Anki add-on that generates high-yield, AI-powered explanations for medical flashcards on demand. Publicly released and actively used by medical students preparing for USMLE board exams.</p>
-          <div class="project-chips"><span class="chip">AI / LLM</span><span class="chip">EdTech</span><span class="chip">USMLE</span><span class="chip">Publicly Released</span></div>
+          <div class="project-tag">Surgical Device · Project Lead</div>
+          <div class="project-title">Robotic Endoscope Holder</div>
+          <div class="project-org">OSU College of Medicine — Aug 2026–Present</div>
+          <p class="project-problem-sm">Automating scope positioning without losing the four-handed workflow</p>
+          <p class="project-desc">Initiated design of a proof-of-concept robotic endoscope holder for endoscopic endonasal skull base surgery. I mentor a team of senior biomedical engineering students through design and prototyping, translating clinical needs and workflow considerations into engineering design goals.</p>
+          <div class="project-chips"><span class="chip">Robotics</span><span class="chip">Skull Base Surgery</span><span class="chip">Biomedical Engineering</span><span class="chip">Mentorship</span></div>
         </div>
       </div>
       <div class="project-card reveal">
         <div class="project-card-top"></div>
         <div class="project-card-body">
-          <div class="project-tag">Nonprofit · Founder · 501(c)(3)</div>
-          <div class="project-title">CliniCorps</div>
-          <div class="project-org">Michigan Registered 501(c)(3) — Ann Arbor, MI</div>
-          <p class="project-problem-sm">Bringing modern software to free clinics</p>
-          <p class="project-desc">Founded a nonprofit with the aim of building a free, open-source telehealth platform for free clinics — enabling volunteer physicians to serve uninsured patients remotely.</p>
-          <div class="project-chips"><span class="chip">EMR Software</span><span class="chip">Telehealth</span><span class="chip">501(c)(3)</span><span class="chip">Global Health</span></div>
+          <div class="project-tag">Startup · Founder · Publicly Released</div>
+          <div class="project-title">AI Explain</div>
+          <div class="project-org">HUJA, LLC — Columbus, OH · Dec 2025–Present</div>
+          <p class="project-problem-sm">What if every medical flashcard came with an expert explanation?</p>
+          <p class="project-desc">Founded HUJA, LLC and built AI Explain from concept through public release: an Anki add-on that generates contextual, high-yield explanations within the flashcard workflow. Actively maintained and used by medical students nationwide for USMLE and exam preparation.</p>
+          <div class="project-chips"><span class="chip">AI / LLM</span><span class="chip">EdTech</span><span class="chip">USMLE</span><span class="chip">Publicly Released</span></div>
         </div>
       </div>
       <div class="project-card reveal">
@@ -596,21 +611,21 @@
         <div class="project-card-body">
           <div class="project-tag">Mobile Development</div>
           <div class="project-title">OSU Medical Student App</div>
-          <div class="project-org">The Ohio State University</div>
-          <p class="project-problem-sm">One app for every OSU med student's schedule and resources</p>
-          <p class="project-desc">Collaboration with OSU to build a mobile app for medical students to access class schedules and university resources.</p>
-          <div class="project-chips"><span class="chip">Mobile App</span><span class="chip">iOS</span></div>
+          <div class="project-org">OSU College of Medicine — Aug 2023–Nov 2025</div>
+          <p class="project-problem-sm">No more downloading hundreds of course files by hand</p>
+          <p class="project-desc">Built a mobile app and macOS tool that automatically downloads and organizes each day's course resources, replacing manual downloads of hundreds of files per week. Demonstrated it to College of Medicine leadership and distributed it directly to fellow students.</p>
+          <div class="project-chips"><span class="chip">Mobile App</span><span class="chip">macOS</span><span class="chip">Automation</span></div>
         </div>
       </div>
       <div class="project-card reveal">
         <div class="project-card-top"></div>
         <div class="project-card-body">
           <div class="project-tag">Volunteer · Community Health</div>
-          <div class="project-title">Noor Free Clinic</div>
+          <div class="project-title">Noor Community Clinic</div>
           <div class="project-org">Columbus, OH — Aug 2023–Present</div>
           <p class="project-problem-sm">Free primary care for Columbus's uninsured community</p>
-          <p class="project-desc">Assist physicians delivering free primary care to uninsured and underserved patients. Also provide Arabic translation services for patients with limited English proficiency.</p>
-          <div class="project-chips"><span class="chip">Primary Care</span><span class="chip">Arabic Translation</span><span class="chip">Community Health</span></div>
+          <p class="project-desc">Assist physicians delivering free primary care to uninsured and underserved patients, and provide Arabic translation for patients with limited English proficiency. Contributed to a community health project developing an HbA1c-guided diabetes health coaching program, identifying language, transportation, and access barriers to participation.</p>
+          <div class="project-chips"><span class="chip">Primary Care</span><span class="chip">Arabic Translation</span><span class="chip">Diabetes Coaching</span></div>
         </div>
       </div>
     </div>
@@ -622,34 +637,64 @@
   <div class="section-inner">
     <p class="section-label reveal">Research</p>
     <h2 class="section-title reveal">Publications &amp; Presentations</h2>
-    <p class="section-subtitle reveal">Peer-reviewed manuscripts and national conference presentations.</p>
+    <p class="section-subtitle reveal">Peer-reviewed publications, submitted manuscripts, inventions, and national and institutional presentations.</p>
 
-    <h3 class="reveal" style="font-family:'Playfair Display',serif; font-size:1.2rem; color:var(--heading); margin-bottom:1rem;">Manuscripts Under Review</h3>
-    <div class="pub-list" style="margin-bottom:3rem;">
-      <div class="pub-item reveal">
-        <strong>Saeed, H.</strong>, Wykoff, Z., Nguyen, M., Jha, N., Reed, D., Phay, J., &amp; Ramaswamy, A.T. (under review). <em>Follow-up patterns and outcomes of patients with thyroid incidentalomas.</em>
-        <div class="pub-venue">Under Review</div>
-      </div>
-    </div>
-
-    <h3 class="reveal" style="font-family:'Playfair Display',serif; font-size:1.2rem; color:var(--heading); margin-bottom:1rem;">Peer-Reviewed Manuscripts</h3>
-    <div class="pub-list" style="margin-bottom:3rem;">
+    <h3 class="pub-group-title reveal">Peer-Reviewed Publications</h3>
+    <div class="pub-list pub-group">
       <div class="pub-item reveal">
         Lehman, L.W., Moody, B., Deep, H., Wu, F., <strong>Saeed, H.</strong>, McCullum, L., Perry, D., Struja, T., Li, Q., Clifford, G., &amp; Mark, R. (2023). <em>VTaC: A benchmark dataset of ventricular tachycardia alarms from ICU monitors.</em>
-        <div class="pub-venue">NeurIPS — Advances in Neural Information Processing Systems · doi:10.13026/8td2-g363</div>
+        <div class="pub-venue">NeurIPS — Advances in Neural Information Processing Systems · <a href="https://doi.org/10.13026/8td2-g363" target="_blank" rel="noopener">doi:10.13026/8td2-g363</a></div>
       </div>
       <div class="pub-item reveal">
         McCullum, L., <strong>Saeed, H.</strong>, Moody, B., Perry, D., Gottlieb, E., Pollard, T., Borrat Frigola, X., Li, Q., Clifford, G., Mark, R., &amp; Lehman, L. (2022). <em>PhysioTag: An Open-Source Platform for Collaborative Annotation of Physiological Waveforms.</em>
-        <div class="pub-venue">Computing in Cardiology (CinC) · doi:10.13026/g06j-3612</div>
+        <div class="pub-venue">Computing in Cardiology (CinC) · <a href="https://doi.org/10.13026/g06j-3612" target="_blank" rel="noopener">doi:10.13026/g06j-3612</a></div>
       </div>
     </div>
 
-    <h3 class="reveal" style="font-family:'Playfair Display',serif; font-size:1.2rem; color:var(--heading); margin-bottom:1rem;">Presentations</h3>
-    <div class="pub-list">
+    <h3 class="pub-group-title reveal">Submitted Manuscripts</h3>
+    <div class="pub-list pub-group">
       <div class="pub-item reveal">
-        <strong>Saeed, H.</strong>, Wykoff, Z., Nguyen, M., Jha, N., Reed, D., &amp; Ramaswamy, A. (2025). Follow-up patterns and outcomes of patients with thyroid incidentalomas.
-        <span class="oral-badge">Oral presentation.</span>
-        <div class="pub-venue">Triological Society Combined Sections Meeting — Orlando, FL</div>
+        <strong>Saeed, H.</strong>, Arch, R., Cunha, M.T., Bhateja, P., Bonomi, M., Rocco, J.W., &amp; Miller, L.E. (2026). <em>Hospice use and last immunotherapy administration near death in Medicare beneficiaries with head and neck cancer.</em>
+        <div class="pub-venue">Submitted to JCO Oncology Practice</div>
+      </div>
+      <div class="pub-item reveal">
+        <strong>Saeed, H.</strong>, Rajan, A., Yurko, B., Jebackumar, T., &amp; Ramaswamy, A. (2026). <em>Timing of outpatient speech-language pathology and swallowing outcomes after acute stroke: A national Medicare cohort study.</em>
+        <div class="pub-venue">Submitted to Dysphagia</div>
+      </div>
+    </div>
+
+    <h3 class="pub-group-title reveal">Works in Progress</h3>
+    <div class="pub-list pub-group">
+      <div class="pub-item reveal">
+        <strong>Saeed, H.</strong>, Bradshaw, J., Miller, L.E., &amp; VanKoevering, K. <em>Transoral robotic surgery in single- and multi-modal oropharyngeal cancer: A Medicare functional outcomes study.</em>
+      </div>
+      <div class="pub-item reveal">
+        <strong>Saeed, H.</strong>, Wykoff, Z., Nguyen, M., Jha, N., Reed, D., Phay, J., &amp; Ramaswamy, A. <em>Follow-up patterns and outcomes of patients with thyroid incidentalomas.</em>
+      </div>
+      <div class="pub-item reveal">
+        Wheelock, K., <strong>Saeed, H.</strong>, Saeed, M., &amp; Oral, H. <em>Electrophysiology specialization and reclassification of automated ECG rhythm interpretation.</em>
+      </div>
+    </div>
+
+    <h3 class="pub-group-title reveal">Inventions</h3>
+    <div class="pub-list pub-group">
+      <div class="pub-item reveal">
+        <em>Machine-learning algorithm for automated atrial flutter detection in 12-lead ECG data.</em> Inventors: <strong>Saeed, H.</strong>, &amp; Oral, H.
+        <div class="pub-venue">Michigan Medicine Frankel Cardiovascular Center · Disclosed to University Technology Transfer Office; provisional patent filing planned</div>
+      </div>
+    </div>
+
+    <h3 class="pub-group-title reveal">National Conferences</h3>
+    <div class="pub-list pub-group">
+      <div class="pub-item reveal">
+        <strong>Saeed, H.</strong>, Rajan, A., Yurko, B., Jebackumar, T., &amp; Ramaswamy, A. (2026). Timing of outpatient speech-language pathology and swallowing outcomes after acute stroke: A national Medicare cohort study.
+        <span class="poster-label">Poster presentation.</span>
+        <div class="pub-venue">Fall Voice Conference — Denver, CO</div>
+      </div>
+      <div class="pub-item reveal">
+        Fleifil, Y., <strong>Saeed, H.</strong>, &amp; Ramaswamy, A. (2026). Effects of dysphagia diagnosis on stroke patient outcome measures.
+        <span class="oral-badge">Oral presentation (presented by Y. Fleifil).</span>
+        <div class="pub-venue">Dysphagia Research Society Annual Meeting — Aurora, CO</div>
       </div>
       <div class="pub-item reveal">
         <strong>Saeed, H.</strong>, Reed, D., &amp; Ramaswamy, A. (2026). Arterial stenosis and baroreflex failure: Nationwide study of carotid-driven autonomic complications among head and neck cancer patients.
@@ -657,10 +702,14 @@
         <div class="pub-venue">Triological Society Combined Sections Meeting — Orlando, FL</div>
       </div>
       <div class="pub-item reveal">
-        Fleifil, Y., <strong>Saeed, H.</strong>, &amp; Ramaswamy, A. (2026). Effects of dysphagia diagnosis on stroke patient outcome measures.
+        <strong>Saeed, H.</strong>, Wykoff, Z., Nguyen, M., Jha, N., Reed, D., &amp; Ramaswamy, A. (2025). Follow-up patterns and outcomes of patients with thyroid incidentalomas.
         <span class="oral-badge">Oral presentation.</span>
-        <div class="pub-venue">Dysphagia Research Society Annual Meeting — Aurora, CO</div>
+        <div class="pub-venue">Triological Society Combined Sections Meeting — Orlando, FL</div>
       </div>
+    </div>
+
+    <h3 class="pub-group-title reveal">Institutional Presentations</h3>
+    <div class="pub-list pub-group">
       <div class="pub-item reveal">
         <strong>Saeed, H.</strong> (2024). Case review: Pediatric patient with Treacher Collins syndrome.
         <span class="oral-badge">Oral presentation.</span>
@@ -670,6 +719,22 @@
         <strong>Saeed, H.</strong> &amp; Oral, H. (2022). Detection of atrial flutter using machine learning.
         <span class="poster-label">Poster presentation.</span>
         <div class="pub-venue">UROP Symposium — University of Michigan, Ann Arbor, MI</div>
+      </div>
+    </div>
+
+    <h3 class="pub-group-title reveal">Submitted Abstracts</h3>
+    <div class="pub-list">
+      <div class="pub-item reveal">
+        <strong>Saeed, H.</strong>, Andresen, N.S., Miller, L.E., Schoo, D.P., &amp; Macielak, R.J. <em>Cochlear implantation trends after the 2022 expansion of National Coverage Determination 50.3 in Medicare patients.</em>
+        <div class="pub-venue">American Neurotology Society — COSM 2027</div>
+      </div>
+      <div class="pub-item reveal">
+        <strong>Saeed, H.</strong>, Arch, R., Cunha, M.T., Bhateja, P., Bonomi, M., Rocco, J.W., &amp; Miller, L.E. <em>Hospice use and last immunotherapy administration near death in Medicare beneficiaries with head and neck cancer.</em>
+        <div class="pub-venue">American Head and Neck Society — COSM 2027</div>
+      </div>
+      <div class="pub-item reveal">
+        <strong>Saeed, H.</strong>, Bradshaw, J., Miller, L.E., &amp; VanKoevering, K. <em>Transoral robotic surgery in single- and multi-modal oropharyngeal cancer: A Medicare functional outcomes study.</em>
+        <div class="pub-venue">American Head and Neck Society — COSM 2027</div>
       </div>
     </div>
   </div>
